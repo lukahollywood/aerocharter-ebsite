@@ -3,12 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Impressum — Aerocharter Nord</title>
+<title>Datenschutzerklärung — Aerocharter Nord</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
 
-/* ── FOUNDATION ── identical tokens to main site ── */
+/* ───────────────────────────────────────────────
+   FOUNDATION — identical tokens to main site
+─────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
@@ -19,7 +21,6 @@ html { scroll-behavior: smooth; }
   --ch:       #bfa06a;
   --ch-hi:    #d4b882;
   --ch-lo:    rgba(191,160,106,0.14);
-  --ch-glow:  rgba(191,160,106,0.035);
   --ivory:    #eeebe4;
   --ivory2:   #e0dbd2;
   --t50:      rgba(238,235,228,0.50);
@@ -53,16 +54,19 @@ body {
   mix-blend-mode: screen;
 }
 
-/* ── NAVIGATION ── */
+/* ───────────────────────────────────────────────
+   NAVIGATION
+─────────────────────────────────────────────── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 300;
   display: flex; align-items: center; justify-content: space-between;
   padding: 40px 88px;
+  transition: padding .6s ease, background .6s ease, border-color .6s ease;
+  border-bottom: 1px solid transparent;
   background: rgba(8,8,8,0.95);
-  border-bottom: 1px solid var(--ch-lo);
+  border-color: var(--ch-lo);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  transition: padding .6s ease;
 }
 .nav-wordmark {
   font-family: 'EB Garamond', serif;
@@ -111,9 +115,11 @@ nav {
 }
 .nav-tel:hover { color: var(--ch); }
 
-/* ── PAGE HEADER ── */
+/* ───────────────────────────────────────────────
+   PAGE HEADER
+─────────────────────────────────────────────── */
 .page-header {
-  padding: 180px 88px 88px;
+  padding: 180px 88px 96px;
   background: var(--void);
   border-bottom: 1px solid var(--ch-lo);
   position: relative;
@@ -122,13 +128,16 @@ nav {
 .page-header::before {
   content: '';
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse 70% 50% at 50% 100%, rgba(191,160,106,0.04) 0%, transparent 70%);
-  pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 100%, rgba(191,160,106,0.04) 0%, transparent 70%);
 }
-.ph-inner { max-width: 800px; margin: 0 auto; position: relative; }
-
+.ph-inner {
+  max-width: 880px; margin: 0 auto;
+  position: relative;
+}
 .ph-eyebrow {
-  display: flex; align-items: center; gap: 18px; margin-bottom: 32px;
+  display: flex; align-items: center; gap: 18px;
+  margin-bottom: 32px;
 }
 .ph-rule { width: 32px; height: 1px; background: var(--ch); opacity: .5; }
 .ph-label {
@@ -137,127 +146,144 @@ nav {
 }
 .ph-title {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(36px, 5vw, 58px); font-weight: 300;
+  font-size: clamp(36px, 5vw, 62px); font-weight: 300;
   line-height: 1.12; color: var(--ivory); letter-spacing: 0.01em;
+  margin-bottom: 28px;
+}
+.ph-intro {
+  font-size: 14px; line-height: 2.1; color: var(--t50);
+  font-weight: 300; max-width: 640px;
 }
 
-/* ── MAIN CONTENT ── */
-.imp-content {
+/* ───────────────────────────────────────────────
+   MAIN CONTENT
+─────────────────────────────────────────────── */
+.ds-content {
   background: var(--obsidian);
-  padding: 88px 88px 144px;
+  padding: 96px 88px 144px;
 }
-.imp-inner {
-  max-width: 800px;
-  margin: 0 auto;
+.ds-inner {
+  max-width: 880px; margin: 0 auto;
   display: flex; flex-direction: column; gap: 0;
 }
 
-/* Company identity block */
-.imp-identity {
-  padding-bottom: 64px;
-  border-bottom: 1px solid var(--ch-lo);
-  margin-bottom: 64px;
+/* Contact block (Verantwortlicher) */
+.ds-contact-block {
+  background: var(--charcoal);
+  border: 1px solid var(--ch-lo);
+  padding: 44px 48px;
+  margin-bottom: 72px;
 }
-.imp-company-name {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(20px, 3vw, 28px); font-weight: 300;
-  color: var(--ivory); letter-spacing: 0.02em;
-  margin-bottom: 40px; line-height: 1.2;
+.ds-contact-block p {
+  font-size: 14px; line-height: 2.0; color: var(--t50); font-weight: 300;
 }
+.ds-contact-block strong {
+  display: block;
+  font-family: 'EB Garamond', serif; font-style: normal;
+  font-size: 18px; color: var(--ivory); font-weight: 400;
+  letter-spacing: 0.04em; margin-bottom: 16px;
+}
+.ds-contact-block a {
+  color: var(--ch); text-decoration: none; transition: opacity .3s;
+}
+.ds-contact-block a:hover { opacity: .7; }
 
-/* Data rows — label + value pairs */
-.imp-rows { display: flex; flex-direction: column; gap: 0; }
-
-.imp-row {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 24px;
-  padding: 22px 0;
-  border-bottom: 1px solid var(--t08);
-  align-items: baseline;
-}
-.imp-row:first-child { border-top: 1px solid var(--t08); }
-
-.imp-row-label {
-  font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
-  color: rgba(191,160,106,0.5); font-weight: 400;
-  padding-top: 3px; flex-shrink: 0;
-}
-.imp-row-value {
-  font-family: 'EB Garamond', serif;
-  font-size: 17px; line-height: 1.7;
-  color: var(--ivory2); letter-spacing: 0.03em;
-}
-.imp-row-value a {
-  color: var(--ch); text-decoration: none;
-  border-bottom: 1px solid rgba(191,160,106,0.22);
-  padding-bottom: 1px;
-  transition: color .4s, border-color .4s;
-}
-.imp-row-value a:hover { color: var(--ch-hi); border-color: rgba(191,160,106,0.55); }
-
-/* Section separator */
-.imp-section {
+/* Section groups */
+.ds-section {
   padding: 56px 0;
   border-bottom: 1px solid var(--t08);
 }
-.imp-section:last-child { border-bottom: none; padding-bottom: 0; }
+.ds-section:first-child { padding-top: 0; }
+.ds-section:last-child { border-bottom: none; padding-bottom: 0; }
 
-.imp-h2 {
+.ds-h2 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(20px, 2.5vw, 28px); font-weight: 300;
+  font-size: clamp(22px, 3vw, 30px); font-weight: 300;
   color: var(--ivory); letter-spacing: 0.01em;
   margin-bottom: 28px; line-height: 1.2;
 }
+.ds-h2 em { font-style: italic; color: var(--ch-hi); }
 
-.imp-h3 {
-  font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
+.ds-h3 {
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
   color: var(--ch); font-weight: 400;
-  margin-bottom: 16px; margin-top: 36px;
+  margin-bottom: 18px; margin-top: 40px;
 }
-.imp-h3:first-child { margin-top: 0; }
+.ds-h3:first-child { margin-top: 0; }
 
-.imp-p {
-  font-size: 14px; line-height: 2.05; color: var(--t50);
-  font-weight: 300; margin-bottom: 18px;
+.ds-p {
+  font-size: 14px; line-height: 2.1; color: var(--t50);
+  font-weight: 300; margin-bottom: 20px;
 }
-.imp-p:last-child { margin-bottom: 0; }
-.imp-p a {
-  color: var(--ch); text-decoration: none;
-  border-bottom: 1px solid rgba(191,160,106,0.22);
-  padding-bottom: 1px;
-  transition: color .4s, border-color .4s;
-}
-.imp-p a:hover { color: var(--ch-hi); border-color: rgba(191,160,106,0.55); }
+.ds-p:last-child { margin-bottom: 0; }
 
-/* Address block in VSBG section */
-.imp-address-block {
-  margin: 20px 0;
-  padding: 28px 32px;
-  border-left: 1px solid var(--ch-lo);
-  background: rgba(191,160,106,0.02);
+.ds-p a {
+  color: var(--ch); text-decoration: none; border-bottom: 1px solid rgba(191,160,106,0.3);
+  transition: border-color .3s, color .3s;
 }
-.imp-address-block p {
-  font-family: 'EB Garamond', serif;
-  font-size: 16px; line-height: 1.95;
-  color: var(--t50); letter-spacing: 0.03em;
-}
-.imp-address-block a {
-  color: var(--ch); text-decoration: none;
-  transition: opacity .4s;
-}
-.imp-address-block a:hover { opacity: .7; }
+.ds-p a:hover { color: var(--ch-hi); border-color: var(--ch-hi); }
 
-/* Timestamp note */
-.imp-timestamp {
-  margin-top: 56px;
-  padding-top: 32px;
-  border-top: 1px solid var(--t08);
-  font-size: 11px; letter-spacing: 0.1em;
-  color: var(--t18); font-weight: 300;
+/* Definition term list */
+.ds-deflist {
+  display: flex; flex-direction: column; gap: 0;
+  margin-top: 8px;
+}
+.ds-def {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--t08);
+}
+.ds-def:last-child { border-bottom: none; }
+.ds-def-term {
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ivory2); font-weight: 400; margin-bottom: 12px;
+}
+.ds-def-body {
+  font-size: 13px; line-height: 2.0; color: var(--t50); font-weight: 300;
 }
 
-/* ── FOOTER ── */
+/* Rights list */
+.ds-rights {
+  display: flex; flex-direction: column; gap: 0;
+}
+.ds-right-item {
+  padding: 32px 0;
+  border-bottom: 1px solid var(--t08);
+  display: grid; grid-template-columns: 28px 1fr; gap: 20px;
+  align-items: start;
+}
+.ds-right-item:first-child { border-top: 1px solid var(--t08); }
+.ds-right-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 11px; color: rgba(191,160,106,0.35);
+  padding-top: 2px; letter-spacing: 0.06em;
+}
+.ds-right-title {
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ivory2); font-weight: 400; margin-bottom: 12px;
+}
+.ds-right-body {
+  font-size: 13px; line-height: 2.0; color: var(--t50); font-weight: 300;
+}
+
+/* Inline list items */
+.ds-list {
+  list-style: none; padding: 0;
+  display: flex; flex-direction: column; gap: 10px;
+  margin: 16px 0 20px;
+}
+.ds-list li {
+  font-size: 13px; line-height: 1.9; color: var(--t50); font-weight: 300;
+  padding-left: 20px; position: relative;
+}
+.ds-list li::before {
+  content: '';
+  position: absolute; left: 0; top: 11px;
+  width: 6px; height: 1px; background: var(--ch); opacity: .5;
+}
+
+/* ───────────────────────────────────────────────
+   FOOTER
+─────────────────────────────────────────────── */
 footer {
   background: var(--void);
   border-top: 1px solid var(--ch-lo);
@@ -280,7 +306,9 @@ footer {
 }
 .f-links a:hover { color: var(--ch); }
 
-/* ── ANIMATIONS ── */
+/* ───────────────────────────────────────────────
+   ANIMATIONS
+─────────────────────────────────────────────── */
 .rv {
   opacity: 0; transform: translateY(14px);
   transition: opacity 1.1s ease, transform 1.1s ease;
@@ -289,23 +317,25 @@ footer {
 .rv.d1 { transition-delay: .12s; }
 .rv.d2 { transition-delay: .22s; }
 
-/* ── RESPONSIVE ── */
+/* ───────────────────────────────────────────────
+   RESPONSIVE
+─────────────────────────────────────────────── */
 @media (max-width: 1140px) {
   nav { padding: 28px 40px; }
   .nav-links { display: none; }
   .page-header { padding: 140px 40px 72px; }
-  .imp-content { padding: 64px 40px 112px; }
+  .ds-content { padding: 72px 40px 100px; }
   footer { padding: 44px 40px; }
   .f-inner { flex-direction: column; gap: 24px; text-align: center; }
   .f-links { justify-content: center; }
+  .ds-contact-block { padding: 32px 28px; }
 }
-@media (max-width: 680px) {
+@media (max-width: 640px) {
   .page-header { padding: 120px 24px 56px; }
-  .imp-content { padding: 52px 24px 88px; }
+  .ds-content { padding: 56px 24px 80px; }
   footer { padding: 40px 24px; }
-  .imp-row { grid-template-columns: 1fr; gap: 6px; }
-  .imp-row-label { font-size: 8px; }
-  .imp-address-block { padding: 22px 20px; }
+  .ds-right-item { grid-template-columns: 1fr; gap: 8px; }
+  .ds-right-num { display: none; }
 }
 
 </style>
@@ -318,15 +348,15 @@ footer {
      NAVIGATION
 ══════════════════════════════════════════ -->
 <nav>
-  <a href="aerocharter-nord.html" class="nav-wordmark">
+  <a href="index.html" class="nav-wordmark">
     <span class="nav-mark"></span>
     Aerocharter Nord
   </a>
   <ul class="nav-links">
-    <li><a href="aerocharter-nord.html#vorteile">Vorteile</a></li>
-    <li><a href="aerocharter-nord.html#flugzeuge">Flotte</a></li>
-    <li><a href="aerocharter-nord.html#empty-legs">Empty Legs</a></li>
-    <li><a href="kontakt.html">Kontakt</a></li>
+    <li><a href="index.html#vorteile">Vorteile</a></li>
+    <li><a href="index.html#flugzeuge">Flotte</a></li>
+    <li><a href="index.html#empty-legs">Empty Legs</a></li>
+    <li><a href="index.html#kontakt">Kontakt</a></li>
   </ul>
   <a href="tel:+4940500535085" class="nav-tel">040 · 500 535 85</a>
 </nav>
@@ -340,98 +370,254 @@ footer {
       <div class="ph-rule"></div>
       <span class="ph-label">Rechtliches</span>
     </div>
-    <h1 class="ph-title">Impressum</h1>
+    <h1 class="ph-title">Datenschutz&shy;erklärung</h1>
+    <p class="ph-intro">
+      Wir freuen uns sehr über Ihr Interesse an unserem Unternehmen. Datenschutz hat einen besonders hohen Stellenwert für die Geschäftsleitung der Aerocharter Nord GmbH.
+    </p>
   </div>
 </header>
 
 <!-- ══════════════════════════════════════════
      CONTENT
 ══════════════════════════════════════════ -->
-<main class="imp-content">
-  <div class="imp-inner">
+<main class="ds-content">
+  <div class="ds-inner">
 
-    <!-- Company identity -->
-    <div class="imp-identity rv">
-      <h2 class="imp-company-name">Aerocharter Nord<br>Flugdienstagentur Pfitzer GmbH</h2>
-      <div class="imp-rows">
-        <div class="imp-row">
-          <span class="imp-row-label">Anschrift</span>
-          <span class="imp-row-value">
-            Geschäftsfliegerzentrum<br>
-            Gebäude 347A<br>
-            22335 Hamburg-Flughafen
-          </span>
+    <!-- Allgemeines -->
+    <div class="ds-section rv">
+      <p class="ds-p">Eine Nutzung der Internetseiten der Aerocharter Nord GmbH ist grundsätzlich ohne jede Angabe personenbezogener Daten möglich. Sofern eine betroffene Person besondere Services unseres Unternehmens über unsere Internetseite in Anspruch nehmen möchte, könnte jedoch eine Verarbeitung personenbezogener Daten erforderlich werden. Ist die Verarbeitung personenbezogener Daten erforderlich und besteht für eine solche Verarbeitung keine gesetzliche Grundlage, holen wir generell eine Einwilligung der betroffenen Person ein.</p>
+      <p class="ds-p">Die Verarbeitung personenbezogener Daten, beispielsweise des Namens, der Anschrift, E-Mail-Adresse oder Telefonnummer einer betroffenen Person, erfolgt stets im Einklang mit der Datenschutz-Grundverordnung und in Übereinstimmung mit den für die Aerocharter Nord GmbH geltenden landesspezifischen Datenschutzbestimmungen. Mittels dieser Datenschutzerklärung möchte unser Unternehmen die Öffentlichkeit über Art, Umfang und Zweck der von uns erhobenen, genutzten und verarbeiteten personenbezogenen Daten informieren. Ferner werden betroffene Personen mittels dieser Datenschutzerklärung über die ihnen zustehenden Rechte aufgeklärt.</p>
+      <p class="ds-p">Die Aerocharter Nord GmbH hat als für die Verarbeitung Verantwortlicher zahlreiche technische und organisatorische Maßnahmen umgesetzt, um einen möglichst lückenlosen Schutz der über diese Internetseite verarbeiteten personenbezogenen Daten sicherzustellen. Dennoch können Internetbasierte Datenübertragungen grundsätzlich Sicherheitslücken aufweisen, sodass ein absoluter Schutz nicht gewährleistet werden kann. Aus diesem Grund steht es jeder betroffenen Person frei, personenbezogene Daten auch auf alternativen Wegen, beispielsweise telefonisch, an uns zu übermitteln.</p>
+    </div>
+
+    <!-- Verantwortlicher -->
+    <div class="ds-section rv d1">
+      <h2 class="ds-h2">Verantwortlicher</h2>
+      <p class="ds-p">Verantwortlicher im Sinne der Datenschutz-Grundverordnung, sonstiger in den Mitgliedstaaten der Europäischen Union geltenden Datenschutzgesetze und anderer Bestimmungen mit datenschutzrechtlichem Charakter ist die:</p>
+      <div class="ds-contact-block">
+        <strong>Aerocharter Nord Flugdienstagentur Pfitzer GmbH</strong>
+        <p>Geschäftsführer Marc Pfitzer<br>
+        Geschäftsfliegerzentrum, Gebäude 347A<br>
+        22335 Hamburg-Flughafen<br>
+        Deutschland<br><br>
+        Tel.: <a href="tel:+4940500535085">040 – 500 535 85</a><br>
+        E-Mail: <a href="mailto:mail@aerocharter.de">mail@aerocharter.de</a><br>
+        <a href="https://www.aerocharter.de" target="_blank" rel="noopener">www.aerocharter.de</a></p>
+      </div>
+    </div>
+
+    <!-- Begriffsbestimmungen -->
+    <div class="ds-section rv">
+      <h2 class="ds-h2">Begriffsbestimmungen</h2>
+      <p class="ds-p">Die Datenschutzerklärung der Aerocharter Nord GmbH beruht auf den Begrifflichkeiten, die durch den Europäischen Richtlinien- und Verordnungsgeber beim Erlass der Datenschutz-Grundverordnung (DS-GVO) verwendet wurden. Unsere Datenschutzerklärung soll sowohl für die Öffentlichkeit als auch für unsere Kunden und Geschäftspartner einfach lesbar und verständlich sein. Um dies zu gewährleisten, möchten wir vorab die verwendeten Begrifflichkeiten erläutern.</p>
+      <div class="ds-deflist">
+        <div class="ds-def">
+          <p class="ds-def-term">Personenbezogene Daten</p>
+          <p class="ds-def-body">Personenbezogene Daten sind alle Informationen, die sich auf eine identifizierte oder identifizierbare natürliche Person (im Folgenden „betroffene Person") beziehen. Als identifizierbar wird eine natürliche Person angesehen, die direkt oder indirekt, insbesondere mittels Zuordnung zu einer Kennung wie einem Namen, zu einer Kennnummer, zu Standortdaten, zu einer Online-Kennung oder zu einem oder mehreren besonderen Merkmalen, die Ausdruck der physischen, physiologischen, genetischen, psychischen, wirtschaftlichen, kulturellen oder sozialen Identität dieser natürlichen Person sind, identifiziert werden kann.</p>
         </div>
-        <div class="imp-row">
-          <span class="imp-row-label">Postfach</span>
-          <span class="imp-row-value">
-            Postfach 634139<br>
-            22323 Hamburg
-          </span>
+        <div class="ds-def">
+          <p class="ds-def-term">Betroffene Person</p>
+          <p class="ds-def-body">Betroffene Person ist jede identifizierte oder identifizierbare natürliche Person, deren personenbezogene Daten von dem für die Verarbeitung Verantwortlichen verarbeitet werden.</p>
         </div>
-        <div class="imp-row">
-          <span class="imp-row-label">Telefon</span>
-          <span class="imp-row-value">
-            <a href="tel:+4940500535085">040 – 500 535 85</a>
-          </span>
+        <div class="ds-def">
+          <p class="ds-def-term">Verarbeitung</p>
+          <p class="ds-def-body">Verarbeitung ist jeder mit oder ohne Hilfe automatisierter Verfahren ausgeführte Vorgang oder jede solche Vorgangsreihe im Zusammenhang mit personenbezogenen Daten wie das Erheben, das Erfassen, die Organisation, das Ordnen, die Speicherung, die Anpassung oder Veränderung, das Auslesen, das Abfragen, die Verwendung, die Offenlegung durch Übermittlung, Verbreitung oder eine andere Form der Bereitstellung, den Abgleich oder die Verknüpfung, die Einschränkung, das Löschen oder die Vernichtung.</p>
         </div>
-        <div class="imp-row">
-          <span class="imp-row-label">E-Mail</span>
-          <span class="imp-row-value">
-            <a href="mailto:mail@aerocharter.de">mail@aerocharter.de</a>
-          </span>
+        <div class="ds-def">
+          <p class="ds-def-term">Einschränkung der Verarbeitung</p>
+          <p class="ds-def-body">Einschränkung der Verarbeitung ist die Markierung gespeicherter personenbezogener Daten mit dem Ziel, ihre künftige Verarbeitung einzuschränken.</p>
         </div>
-        <div class="imp-row">
-          <span class="imp-row-label">Handelsregister</span>
-          <span class="imp-row-value">Hamburg HRB 64199</span>
+        <div class="ds-def">
+          <p class="ds-def-term">Profiling</p>
+          <p class="ds-def-body">Profiling ist jede Art der automatisierten Verarbeitung personenbezogener Daten, die darin besteht, dass diese personenbezogenen Daten verwendet werden, um bestimmte persönliche Aspekte, die sich auf eine natürliche Person beziehen, zu bewerten, insbesondere, um Aspekte bezüglich Arbeitsleistung, wirtschaftlicher Lage, Gesundheit, persönlicher Vorlieben, Interessen, Zuverlässigkeit, Verhalten, Aufenthaltsort oder Ortswechsel dieser natürlichen Person zu analysieren oder vorherzusagen.</p>
         </div>
-        <div class="imp-row">
-          <span class="imp-row-label">Geschäftsführer</span>
-          <span class="imp-row-value">Marc Pfitzer</span>
+        <div class="ds-def">
+          <p class="ds-def-term">Pseudonymisierung</p>
+          <p class="ds-def-body">Pseudonymisierung ist die Verarbeitung personenbezogener Daten in einer Weise, auf welche die personenbezogenen Daten ohne Hinzuziehung zusätzlicher Informationen nicht mehr einer spezifischen betroffenen Person zugeordnet werden können, sofern diese zusätzlichen Informationen gesondert aufbewahrt werden und technischen und organisatorischen Maßnahmen unterliegen, die gewährleisten, dass die personenbezogenen Daten nicht einer identifizierten oder identifizierbaren natürlichen Person zugewiesen werden.</p>
         </div>
-        <div class="imp-row">
-          <span class="imp-row-label">USt.-IdNr.</span>
-          <span class="imp-row-value">DE187223980</span>
+        <div class="ds-def">
+          <p class="ds-def-term">Verantwortlicher oder für die Verarbeitung Verantwortlicher</p>
+          <p class="ds-def-body">Verantwortlicher oder für die Verarbeitung Verantwortlicher ist die natürliche oder juristische Person, Behörde, Einrichtung oder andere Stelle, die allein oder gemeinsam mit anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten entscheidet. Sind die Zwecke und Mittel dieser Verarbeitung durch das Unionsrecht oder das Recht der Mitgliedstaaten vorgegeben, so kann der Verantwortliche beziehungsweise können die bestimmten Kriterien seiner Benennung nach dem Unionsrecht oder dem Recht der Mitgliedstaaten vorgesehen werden.</p>
+        </div>
+        <div class="ds-def">
+          <p class="ds-def-term">Auftragsverarbeiter</p>
+          <p class="ds-def-body">Auftragsverarbeiter ist eine natürliche oder juristische Person, Behörde, Einrichtung oder andere Stelle, die personenbezogene Daten im Auftrag des Verantwortlichen verarbeitet.</p>
+        </div>
+        <div class="ds-def">
+          <p class="ds-def-term">Empfänger</p>
+          <p class="ds-def-body">Empfänger ist eine natürliche oder juristische Person, Behörde, Einrichtung oder andere Stelle, der personenbezogene Daten offengelegt werden, unabhängig davon, ob es sich bei ihr um einen Dritten handelt oder nicht. Behörden, die im Rahmen eines bestimmten Untersuchungsauftrags nach dem Unionsrecht oder dem Recht der Mitgliedstaaten möglicherweise personenbezogene Daten erhalten, gelten jedoch nicht als Empfänger.</p>
+        </div>
+        <div class="ds-def">
+          <p class="ds-def-term">Dritter</p>
+          <p class="ds-def-body">Dritter ist eine natürliche oder juristische Person, Behörde, Einrichtung oder andere Stelle außer der betroffenen Person, dem Verantwortlichen, dem Auftragsverarbeiter und den Personen, die unter der unmittelbaren Verantwortung des Verantwortlichen oder des Auftragsverarbeiters befugt sind, die personenbezogenen Daten zu verarbeiten.</p>
+        </div>
+        <div class="ds-def">
+          <p class="ds-def-term">Einwilligung</p>
+          <p class="ds-def-body">Einwilligung ist jede von der betroffenen Person freiwillig für den bestimmten Fall in informierter Weise und unmissverständlich abgegebene Willensbekundung in Form einer Erklärung oder einer sonstigen eindeutigen bestätigenden Handlung, mit der die betroffene Person zu verstehen gibt, dass sie mit der Verarbeitung der sie betreffenden personenbezogenen Daten einverstanden ist.</p>
         </div>
       </div>
     </div>
 
-    <!-- VSBG -->
-    <div class="imp-section rv d1">
-      <h2 class="imp-h2">Streitbeilegung</h2>
-      <p class="imp-p">Pflichtangabe gemäß § 36 VSBG:<br>
-      Wir nehmen nicht an einem Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teil. Das Gesetz über die alternative Streitbeilegung in Verbrauchersachen fordert aber, dass wir Sie trotzdem auf eine für Sie zuständige Verbraucherschlichtungsstelle hinweisen:</p>
-      <div class="imp-address-block">
-        <p>Allgemeine Verbraucherschlichtungsstelle<br>
-        des Zentrums für Schlichtung<br>
-        Straßburger Straße 8<br>
-        77694 Kehl<br><br>
-        <a href="http://www.verbraucher-schlichter.de" target="_blank" rel="noopener">www.verbraucher-schlichter.de</a></p>
+    <!-- Datenerfassung -->
+    <div class="ds-section rv">
+      <h2 class="ds-h2">Erfassung von allgemeinen Daten und Informationen</h2>
+      <p class="ds-p">Die Internetseite der Aerocharter Nord GmbH erfasst mit jedem Aufruf der Internetseite durch eine betroffene Person oder ein automatisiertes System eine Reihe von allgemeinen Daten und Informationen. Diese allgemeinen Daten und Informationen werden in den Logfiles des Servers gespeichert. Erfasst werden können die (1) verwendeten Browsertypen und Versionen, (2) das vom zugreifenden System verwendete Betriebssystem, (3) die Internetseite, von welcher ein zugreifendes System auf unsere Internetseite gelangt (sogenannte Referrer), (4) die Unterwebseiten, welche über ein zugreifendes System auf unserer Internetseite angesteuert werden, (5) das Datum und die Uhrzeit eines Zugriffs auf die Internetseite, (6) eine Internet-Protokoll-Adresse (IP-Adresse), (7) der Internet-Service-Provider des zugreifenden Systems und (8) sonstige ähnliche Daten und Informationen, die der Gefahrenabwehr im Falle von Angriffen auf unsere informationstechnologischen Systeme dienen.</p>
+      <p class="ds-p">Bei der Nutzung dieser allgemeinen Daten und Informationen zieht die Aerocharter Nord GmbH keine Rückschlüsse auf die betroffene Person. Diese Informationen werden vielmehr benötigt, um (1) die Inhalte unserer Internetseite korrekt auszuliefern, (2) die Inhalte unserer Internetseite sowie die Werbung für diese zu optimieren, (3) die dauerhafte Funktionsfähigkeit unserer informationstechnologischen Systeme und der Technik unserer Internetseite zu gewährleisten sowie (4) um Strafverfolgungsbehörden im Falle eines Cyberangriffes die zur Strafverfolgung notwendigen Informationen bereitzustellen. Diese anonym erhobenen Daten und Informationen werden durch die Aerocharter Nord GmbH daher einerseits statistisch und ferner mit dem Ziel ausgewertet, den Datenschutz und die Datensicherheit in unserem Unternehmen zu erhöhen, um letztlich ein optimales Schutzniveau für die von uns verarbeiteten personenbezogenen Daten sicherzustellen. Die anonymen Daten der Server-Logfiles werden getrennt von allen durch eine betroffene Person angegebenen personenbezogenen Daten gespeichert.</p>
+    </div>
+
+    <!-- Kontaktmöglichkeit -->
+    <div class="ds-section rv">
+      <h2 class="ds-h2">Kontaktmöglichkeit über die Internetseite</h2>
+      <p class="ds-p">Die Internetseite der Aerocharter Nord GmbH enthält aufgrund von gesetzlichen Vorschriften Angaben, die eine schnelle elektronische Kontaktaufnahme zu unserem Unternehmen sowie eine unmittelbare Kommunikation mit uns ermöglichen, was ebenfalls eine allgemeine Adresse der sogenannten elektronischen Post (E-Mail-Adresse) umfasst. Sofern eine betroffene Person per E-Mail oder über ein Kontaktformular den Kontakt mit dem für die Verarbeitung Verantwortlichen aufnimmt, werden die von der betroffenen Person übermittelten personenbezogenen Daten automatisch gespeichert. Solche auf freiwilliger Basis von einer betroffenen Person an den für die Verarbeitung Verantwortlichen übermittelten personenbezogenen Daten werden für Zwecke der Bearbeitung oder der Kontaktaufnahme zur betroffenen Person gespeichert. Es erfolgt keine Weitergabe dieser personenbezogenen Daten an Dritte.</p>
+    </div>
+
+    <!-- Löschung -->
+    <div class="ds-section rv">
+      <h2 class="ds-h2">Routinemäßige Löschung und Sperrung von personenbezogenen Daten</h2>
+      <p class="ds-p">Der für die Verarbeitung Verantwortliche verarbeitet und speichert personenbezogene Daten der betroffenen Person nur für den Zeitraum, der zur Erreichung des Speicherungszwecks erforderlich ist oder sofern dies durch den Europäischen Richtlinien- und Verordnungsgeber oder einen anderen Gesetzgeber in Gesetzen oder Vorschriften, welchen der für die Verarbeitung Verantwortliche unterliegt, vorgesehen wurde.</p>
+      <p class="ds-p">Entfällt der Speicherungszweck oder läuft eine vom Europäischen Richtlinien- und Verordnungsgeber oder einem anderen zuständigen Gesetzgeber vorgeschriebene Speicherfrist ab, werden die personenbezogenen Daten routinemäßig und entsprechend den gesetzlichen Vorschriften gesperrt oder gelöscht.</p>
+    </div>
+
+    <!-- Rechte -->
+    <div class="ds-section rv">
+      <h2 class="ds-h2">Rechte der betroffenen Person</h2>
+      <div class="ds-rights">
+        <div class="ds-right-item">
+          <span class="ds-right-num">01</span>
+          <div>
+            <p class="ds-right-title">Recht auf Bestätigung</p>
+            <p class="ds-right-body">Jede betroffene Person hat das vom Europäischen Richtlinien- und Verordnungsgeber eingeräumte Recht, von dem für die Verarbeitung Verantwortlichen eine Bestätigung darüber zu verlangen, ob sie betreffende personenbezogene Daten verarbeitet werden. Möchte eine betroffene Person dieses Bestätigungsrecht in Anspruch nehmen, kann sie sich hierzu jederzeit an einen Mitarbeiter des für die Verarbeitung Verantwortlichen wenden.</p>
+          </div>
+        </div>
+        <div class="ds-right-item">
+          <span class="ds-right-num">02</span>
+          <div>
+            <p class="ds-right-title">Recht auf Auskunft</p>
+            <p class="ds-right-body">Jede von der Verarbeitung personenbezogener Daten betroffene Person hat das Recht, jederzeit von dem für die Verarbeitung Verantwortlichen unentgeltliche Auskunft über die zu seiner Person gespeicherten personenbezogenen Daten und eine Kopie dieser Auskunft zu erhalten. Ferner hat der Europäische Richtlinien- und Verordnungsgeber der betroffenen Person Auskunft über folgende Informationen zugestanden:</p>
+            <ul class="ds-list">
+              <li>die Verarbeitungszwecke</li>
+              <li>die Kategorien personenbezogener Daten, die verarbeitet werden</li>
+              <li>die Empfänger oder Kategorien von Empfängern, gegenüber denen die personenbezogenen Daten offengelegt worden sind oder noch offengelegt werden</li>
+              <li>falls möglich die geplante Dauer, für die die personenbezogenen Daten gespeichert werden, oder die Kriterien für die Festlegung dieser Dauer</li>
+              <li>das Bestehen eines Rechts auf Berichtigung oder Löschung der sie betreffenden personenbezogenen Daten oder auf Einschränkung der Verarbeitung</li>
+              <li>das Bestehen eines Beschwerderechts bei einer Aufsichtsbehörde</li>
+              <li>wenn die personenbezogenen Daten nicht bei der betroffenen Person erhoben werden: Alle verfügbaren Informationen über die Herkunft der Daten</li>
+              <li>das Bestehen einer automatisierten Entscheidungsfindung einschließlich Profiling gemäß Artikel 22 Abs. 1 und 4 DS-GVO</li>
+            </ul>
+            <p class="ds-right-body">Ferner steht der betroffenen Person ein Auskunftsrecht darüber zu, ob personenbezogene Daten an ein Drittland oder an eine internationale Organisation übermittelt wurden. Möchte eine betroffene Person dieses Auskunftsrecht in Anspruch nehmen, kann sie sich hierzu jederzeit an einen Mitarbeiter des für die Verarbeitung Verantwortlichen wenden.</p>
+          </div>
+        </div>
+        <div class="ds-right-item">
+          <span class="ds-right-num">03</span>
+          <div>
+            <p class="ds-right-title">Recht auf Berichtigung</p>
+            <p class="ds-right-body">Jede von der Verarbeitung personenbezogener Daten betroffene Person hat das Recht, die unverzügliche Berichtigung sie betreffender unrichtiger personenbezogener Daten zu verlangen. Ferner steht der betroffenen Person das Recht zu, unter Berücksichtigung der Zwecke der Verarbeitung, die Vervollständigung unvollständiger personenbezogener Daten zu verlangen. Möchte eine betroffene Person dieses Berichtigungsrecht in Anspruch nehmen, kann sie sich hierzu jederzeit an einen Mitarbeiter des für die Verarbeitung Verantwortlichen wenden.</p>
+          </div>
+        </div>
+        <div class="ds-right-item">
+          <span class="ds-right-num">04</span>
+          <div>
+            <p class="ds-right-title">Recht auf Löschung (Recht auf Vergessen werden)</p>
+            <p class="ds-right-body">Jede von der Verarbeitung personenbezogener Daten betroffene Person hat das Recht, von dem Verantwortlichen zu verlangen, dass die sie betreffenden personenbezogenen Daten unverzüglich gelöscht werden, sofern einer der folgenden Gründe zutrifft und soweit die Verarbeitung nicht erforderlich ist:</p>
+            <ul class="ds-list">
+              <li>Die personenbezogenen Daten wurden für solche Zwecke erhoben oder verarbeitet, für welche sie nicht mehr notwendig sind.</li>
+              <li>Die betroffene Person widerruft ihre Einwilligung und es fehlt an einer anderweitigen Rechtsgrundlage für die Verarbeitung.</li>
+              <li>Die betroffene Person legt Widerspruch gegen die Verarbeitung ein und es liegen keine vorrangigen berechtigten Gründe für die Verarbeitung vor.</li>
+              <li>Die personenbezogenen Daten wurden unrechtmäßig verarbeitet.</li>
+              <li>Die Löschung ist zur Erfüllung einer rechtlichen Verpflichtung erforderlich.</li>
+              <li>Die personenbezogenen Daten wurden in Bezug auf angebotene Dienste der Informationsgesellschaft gemäß Art. 8 Abs. 1 DS-GVO erhoben.</li>
+            </ul>
+            <p class="ds-right-body">Sofern einer der oben genannten Gründe zutrifft, kann sich die betroffene Person jederzeit an einen Mitarbeiter der Aerocharter Nord GmbH wenden. Der Mitarbeiter wird veranlassen, dass dem Löschverlangen unverzüglich nachgekommen wird.</p>
+          </div>
+        </div>
+        <div class="ds-right-item">
+          <span class="ds-right-num">05</span>
+          <div>
+            <p class="ds-right-title">Recht auf Einschränkung der Verarbeitung</p>
+            <p class="ds-right-body">Jede von der Verarbeitung personenbezogener Daten betroffene Person hat das Recht, von dem Verantwortlichen die Einschränkung der Verarbeitung zu verlangen, wenn eine der folgenden Voraussetzungen gegeben ist:</p>
+            <ul class="ds-list">
+              <li>Die Richtigkeit der personenbezogenen Daten wird von der betroffenen Person bestritten.</li>
+              <li>Die Verarbeitung ist unrechtmäßig und die betroffene Person lehnt die Löschung ab und verlangt stattdessen die Einschränkung der Nutzung.</li>
+              <li>Der Verantwortliche benötigt die Daten nicht länger, die betroffene Person jedoch zur Geltendmachung von Rechtsansprüchen.</li>
+              <li>Die betroffene Person hat Widerspruch gegen die Verarbeitung eingelegt und es steht noch nicht fest, ob die berechtigten Gründe des Verantwortlichen überwiegen.</li>
+            </ul>
+            <p class="ds-right-body">Sofern eine der Voraussetzungen gegeben ist, kann sich die betroffene Person jederzeit an einen Mitarbeiter der Aerocharter Nord GmbH wenden.</p>
+          </div>
+        </div>
+        <div class="ds-right-item">
+          <span class="ds-right-num">06</span>
+          <div>
+            <p class="ds-right-title">Recht auf Datenübertragbarkeit</p>
+            <p class="ds-right-body">Jede von der Verarbeitung personenbezogener Daten betroffene Person hat das Recht, die sie betreffenden personenbezogenen Daten in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten. Sie hat außerdem das Recht, diese Daten einem anderen Verantwortlichen ohne Behinderung zu übermitteln, sofern die Verarbeitung auf der Einwilligung gemäß Art. 6 Abs. 1 Buchstabe a DS-GVO oder auf einem Vertrag gemäß Art. 6 Abs. 1 Buchstabe b DS-GVO beruht und die Verarbeitung mithilfe automatisierter Verfahren erfolgt. Zur Geltendmachung dieses Rechts kann sich die betroffene Person jederzeit an einen Mitarbeiter der Aerocharter Nord GmbH wenden.</p>
+          </div>
+        </div>
+        <div class="ds-right-item">
+          <span class="ds-right-num">07</span>
+          <div>
+            <p class="ds-right-title">Widerspruchsrecht</p>
+            <p class="ds-right-body">Jede von der Verarbeitung personenbezogener Daten betroffene Person hat das Recht, aus Gründen, die sich aus ihrer besonderen Situation ergeben, jederzeit gegen die Verarbeitung sie betreffender personenbezogener Daten, die aufgrund von Art. 6 Abs. 1 Buchstaben e oder f DS-GVO erfolgt, Widerspruch einzulegen. Dies gilt auch für ein auf diese Bestimmungen gestütztes Profiling.</p>
+            <p class="ds-right-body">Die Aerocharter Nord GmbH verarbeitet die personenbezogenen Daten im Falle des Widerspruchs nicht mehr, es sei denn, es können zwingende schutzwürdige Gründe für die Verarbeitung nachgewiesen werden, die den Interessen, Rechten und Freiheiten der betroffenen Person überwiegen, oder die Verarbeitung dient der Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen.</p>
+            <p class="ds-right-body">Verarbeitet die Aerocharter Nord GmbH personenbezogene Daten, um Direktwerbung zu betreiben, so hat die betroffene Person das Recht, jederzeit Widerspruch gegen die Verarbeitung der personenbezogenen Daten zum Zwecke derartiger Werbung einzulegen.</p>
+          </div>
+        </div>
+        <div class="ds-right-item">
+          <span class="ds-right-num">08</span>
+          <div>
+            <p class="ds-right-title">Automatisierte Entscheidungen im Einzelfall einschließlich Profiling</p>
+            <p class="ds-right-body">Jede von der Verarbeitung personenbezogener Daten betroffene Person hat das Recht, nicht einer ausschließlich auf einer automatisierten Verarbeitung — einschließlich Profiling — beruhenden Entscheidung unterworfen zu werden, die ihr gegenüber rechtliche Wirkung entfaltet oder sie in ähnlicher Weise erheblich beeinträchtigt, sofern die Entscheidung (1) nicht für den Abschluss oder die Erfüllung eines Vertrags erforderlich ist, oder (2) aufgrund von Rechtsvorschriften zulässig ist, oder (3) mit ausdrücklicher Einwilligung der betroffenen Person erfolgt. Möchte die betroffene Person Rechte mit Bezug auf automatisierte Entscheidungen geltend machen, kann sie sich hierzu jederzeit an einen Mitarbeiter des für die Verarbeitung Verantwortlichen wenden.</p>
+          </div>
+        </div>
+        <div class="ds-right-item">
+          <span class="ds-right-num">09</span>
+          <div>
+            <p class="ds-right-title">Recht auf Widerruf einer datenschutzrechtlichen Einwilligung</p>
+            <p class="ds-right-body">Jede von der Verarbeitung personenbezogener Daten betroffene Person hat das Recht, eine Einwilligung zur Verarbeitung personenbezogener Daten jederzeit zu widerrufen. Möchte die betroffene Person ihr Recht auf Widerruf einer Einwilligung geltend machen, kann sie sich hierzu jederzeit an einen Mitarbeiter des für die Verarbeitung Verantwortlichen wenden.</p>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Haftungsausschluss -->
-    <div class="imp-section rv">
-      <h2 class="imp-h2">Haftungsausschluss</h2>
-
-      <p class="imp-h3">Haftung für Inhalte</p>
-      <p class="imp-p">Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
-
-      <p class="imp-h3">Haftung für Links</p>
-      <p class="imp-p">Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>
-
-      <p class="imp-h3">Urheberrecht</p>
-      <p class="imp-p">Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p>
+    <!-- Google Analytics -->
+    <div class="ds-section rv">
+      <h2 class="ds-h2">Datenschutzbestimmungen zu Einsatz und Verwendung von Google Analytics</h2>
+      <p class="ds-p">Der für die Verarbeitung Verantwortliche hat auf dieser Internetseite die Komponente Google Analytics (mit Anonymisierungsfunktion) integriert. Google Analytics ist ein Web-Analyse-Dienst. Web-Analyse ist die Erhebung, Sammlung und Auswertung von Daten über das Verhalten von Besuchern von Internetseiten. Ein Web-Analyse-Dienst erfasst unter anderem Daten darüber, von welcher Internetseite eine betroffene Person auf eine Internetseite gekommen ist (sogenannte Referrer), auf welche Unterseiten zugegriffen oder wie oft und für welche Verweildauer eine Unterseite betrachtet wurde.</p>
+      <p class="ds-p">Betreibergesellschaft der Google-Analytics-Komponente ist die Google Inc., 1600 Amphitheatre Pkwy, Mountain View, CA 94043-1351, USA.</p>
+      <p class="ds-p">Der für die Verarbeitung Verantwortliche verwendet für die Web-Analyse über Google Analytics den Zusatz „_gat._anonymizeIp". Mittels dieses Zusatzes wird die IP-Adresse des Internetanschlusses der betroffenen Person von Google gekürzt und anonymisiert, wenn der Zugriff auf unsere Internetseiten aus einem Mitgliedstaat der Europäischen Union oder aus einem anderen Vertragsstaat des Abkommens über den Europäischen Wirtschaftsraum erfolgt.</p>
+      <p class="ds-p">Google Analytics setzt ein Cookie auf dem informationstechnologischen System der betroffenen Person. Mit Setzung des Cookies wird Google eine Analyse der Benutzung unserer Internetseite ermöglicht. Durch jeden Aufruf einer der Einzelseiten dieser Internetseite wird der Internetbrowser automatisch durch die jeweilige Google-Analytics-Komponente veranlasst, Daten zum Zwecke der Online-Analyse an Google zu übermitteln. Im Rahmen dieses technischen Verfahrens erhält Google Kenntnis über personenbezogene Daten, wie der IP-Adresse der betroffenen Person.</p>
+      <p class="ds-p">Die betroffene Person kann die Setzung von Cookies durch unsere Internetseite jederzeit mittels einer entsprechenden Einstellung des genutzten Internetbrowsers verhindern und damit der Setzung von Cookies dauerhaft widersprechen. Ferner besteht für die betroffene Person die Möglichkeit, einer Erfassung der durch Google Analytics erzeugten Daten zu widersprechen. Hierzu muss die betroffene Person ein Browser-Add-On unter dem Link <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">https://tools.google.com/dlpage/gaoptout</a> herunterladen und installieren.</p>
+      <p class="ds-p">Weitere Informationen und die geltenden Datenschutzbestimmungen von Google können unter <a href="https://www.google.de/intl/de/policies/privacy/" target="_blank" rel="noopener">https://www.google.de/intl/de/policies/privacy/</a> und unter <a href="http://www.google.com/analytics/terms/de.html" target="_blank" rel="noopener">http://www.google.com/analytics/terms/de.html</a> abgerufen werden.</p>
     </div>
 
-    <!-- Datenschutz link -->
-    <div class="imp-section rv">
-      <h2 class="imp-h2">Datenschutzerklärung</h2>
-      <p class="imp-p">Unsere Datenschutzerklärung finden Sie unter: <a href="datenschutz.html">Datenschutzerklärung</a></p>
+    <!-- Rechtsgrundlage -->
+    <div class="ds-section rv">
+      <h2 class="ds-h2">Rechtsgrundlage der Verarbeitung</h2>
+      <p class="ds-p">Art. 6 I lit. a DS-GVO dient unserem Unternehmen als Rechtsgrundlage für Verarbeitungsvorgänge, bei denen wir eine Einwilligung für einen bestimmten Verarbeitungszweck einholen. Ist die Verarbeitung personenbezogener Daten zur Erfüllung eines Vertrags erforderlich, beruht die Verarbeitung auf Art. 6 I lit. b DS-GVO. Gleiches gilt für Verarbeitungsvorgänge, die zur Durchführung vorvertraglicher Maßnahmen erforderlich sind. Unterliegt unser Unternehmen einer rechtlichen Verpflichtung, durch welche eine Verarbeitung von personenbezogenen Daten erforderlich wird, so basiert die Verarbeitung auf Art. 6 I lit. c DS-GVO.</p>
+      <p class="ds-p">In seltenen Fällen könnte die Verarbeitung von personenbezogenen Daten erforderlich werden, um lebenswichtige Interessen der betroffenen Person oder einer anderen natürlichen Person zu schützen. Dann würde die Verarbeitung auf Art. 6 I lit. d DS-GVO beruhen. Letztlich könnten Verarbeitungsvorgänge auf Art. 6 I lit. f DS-GVO beruhen, wenn die Verarbeitung zur Wahrung eines berechtigten Interesses unseres Unternehmens oder eines Dritten erforderlich ist, sofern die Interessen, Grundrechte und Grundfreiheiten des Betroffenen nicht überwiegen.</p>
     </div>
 
-    <!-- Timestamp -->
-    <p class="imp-timestamp rv">Letzte Änderung: Freitag, 31. Januar 2020</p>
+    <!-- Speicherdauer -->
+    <div class="ds-section rv">
+      <h2 class="ds-h2">Dauer der Speicherung personenbezogener Daten</h2>
+      <p class="ds-p">Das Kriterium für die Dauer der Speicherung von personenbezogenen Daten ist die jeweilige gesetzliche Aufbewahrungsfrist. Nach Ablauf der Frist werden die entsprechenden Daten routinemäßig gelöscht, sofern sie nicht mehr zur Vertragserfüllung oder Vertragsanbahnung erforderlich sind.</p>
+    </div>
+
+    <!-- Gesetzliche Vorschriften -->
+    <div class="ds-section rv">
+      <h2 class="ds-h2">Gesetzliche oder vertragliche Vorschriften zur Bereitstellung personenbezogener Daten</h2>
+      <p class="ds-p">Wir klären Sie darüber auf, dass die Bereitstellung personenbezogener Daten zum Teil gesetzlich vorgeschrieben ist (z. B. Steuervorschriften) oder sich auch aus vertraglichen Regelungen ergeben kann. Mitunter kann es zu einem Vertragsschluss erforderlich sein, dass eine betroffene Person uns personenbezogene Daten zur Verfügung stellt, die in der Folge durch uns verarbeitet werden müssen. Eine Nichtbereitstellung der personenbezogenen Daten hätte zur Folge, dass der Vertrag mit dem Betroffenen nicht geschlossen werden könnte.</p>
+      <p class="ds-p">Vor einer Bereitstellung personenbezogener Daten muss sich der Betroffene an einen unserer Mitarbeiter wenden. Unser Mitarbeiter klärt den Betroffenen einzelfallbezogen darüber auf, ob die Bereitstellung der personenbezogenen Daten gesetzlich oder vertraglich vorgeschrieben oder für den Vertragsabschluss erforderlich ist, ob eine Verpflichtung besteht, die personenbezogenen Daten bereitzustellen, und welche Folgen die Nichtbereitstellung hätte.</p>
+    </div>
+
+    <!-- Automatisierte Entscheidungsfindung -->
+    <div class="ds-section rv">
+      <h2 class="ds-h2">Bestehen einer automatisierten Entscheidungsfindung</h2>
+      <p class="ds-p">Als verantwortungsbewusstes Unternehmen verzichten wir auf eine automatische Entscheidungsfindung oder ein Profiling.</p>
+    </div>
+
+    <!-- Hinweis -->
+    <div class="ds-section rv">
+      <p class="ds-p" style="font-size:12px; color: var(--t18); line-height: 1.8;">Diese Datenschutzerklärung wurde durch den Datenschutzerklärungs-Generator der Deutschen Gesellschaft für Datenschutz, in Kooperation mit der Kanzlei für Medienrecht WILDE BEUGER SOLMECKE | Rechtsanwälte erstellt.</p>
+    </div>
 
   </div>
 </main>
@@ -441,7 +627,7 @@ footer {
 ══════════════════════════════════════════ -->
 <footer>
   <div class="f-inner">
-    <a href="aerocharter-nord.html" class="f-logo">Aerocharter Nord</a>
+    <a href="index.html" class="f-logo">Aerocharter Nord</a>
     <p class="f-copy">© 2025 Aerocharter Nord. Alle Rechte vorbehalten.</p>
     <ul class="f-links">
       <li><a href="impressum.html">Impressum</a></li>
