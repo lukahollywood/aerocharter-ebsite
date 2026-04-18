@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontakt — Aerocharter Nord</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+
+/* ── FOUNDATION — identical tokens to main site ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --void:     #080808;
+  --obsidian: #0e0e0e;
+  --charcoal: #141414;
+  --ch:       #bfa06a;
+  --ch-hi:    #d4b882;
+  --ch-lo:    rgba(191,160,106,0.14);
+  --ch-glow:  rgba(191,160,106,0.035);
+  --ivory:    #eeebe4;
+  --ivory2:   #e0dbd2;
+  --t50:      rgba(238,235,228,0.50);
+  --t30:      rgba(238,235,228,0.30);
+  --t18:      rgba(238,235,228,0.18);
+  --t08:      rgba(238,235,228,0.08);
+}
+
+body {
+  background: var(--void);
+  color: var(--ivory);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::-webkit-scrollbar { width: 2px; }
+::-webkit-scrollbar-track { background: var(--void); }
+::-webkit-scrollbar-thumb { background: rgba(191,160,106,0.28); }
+
+/* ── Cursor ── */
+.cursor {
+  width: 6px; height: 6px;
+  background: var(--ch); border-radius: 50%;
+  position: fixed; top: 0; left: 0;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%,-50%);
+  opacity: 0; transition: opacity .4s ease;
+  mix-blend-mode: screen;
+}
+
+/* ── NAVIGATION ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 40px 88px;
+  background: rgba(8,8,8,0.95);
+  border-bottom: 1px solid var(--ch-lo);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: padding .6s ease;
+}
+.nav-wordmark {
+  font-family: 'EB Garamond', serif;
+  font-size: 15px; font-weight: 400;
+  letter-spacing: 0.38em; text-transform: uppercase;
+  color: var(--ivory); text-decoration: none;
+  display: flex; align-items: center; gap: 16px;
+}
+.nav-mark {
+  width: 18px; height: 18px;
+  border: 1px solid rgba(191,160,106,0.45);
+  position: relative; flex-shrink: 0;
+}
+.nav-mark::before {
+  content: '';
+  position: absolute;
+  width: 6px; height: 6px;
+  border: 1px solid rgba(191,160,106,0.55);
+  border-radius: 50%;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+}
+.nav-links {
+  display: flex; gap: 56px; list-style: none;
+  position: absolute; left: 50%; transform: translateX(-50%);
+}
+.nav-links a {
+  font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--t30); text-decoration: none; font-weight: 400;
+  transition: color .5s ease;
+  position: relative; padding-bottom: 5px;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0;
+  width: 0; height: 1px; background: var(--ch);
+  transition: width .5s ease;
+}
+.nav-links a:hover { color: var(--ch); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--ch); }
+.nav-links a.active::after { width: 100%; }
+.nav-tel {
+  font-family: 'EB Garamond', serif;
+  font-size: 15px; letter-spacing: 0.07em;
+  color: var(--t30); text-decoration: none;
+  transition: color .5s ease;
+}
+.nav-tel:hover { color: var(--ch); }
+
+/* ── PAGE HEADER ── */
+.page-header {
+  padding: 180px 88px 96px;
+  background: var(--void);
+  border-bottom: 1px solid var(--ch-lo);
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(191,160,106,0.045) 0%, transparent 65%);
+  pointer-events: none;
+}
+/* Faint corner brackets — matching hero aesthetic */
+.ph-corner {
+  position: absolute; width: 32px; height: 32px; opacity: .18;
+}
+.ph-corner-tl { top: 96px; left: 88px; border-top: 1px solid var(--ch); border-left: 1px solid var(--ch); }
+.ph-corner-tr { top: 96px; right: 88px; border-top: 1px solid var(--ch); border-right: 1px solid var(--ch); }
+
+.ph-inner {
+  max-width: 1360px; margin: 0 auto; position: relative;
+}
+.ph-eyebrow {
+  display: flex; align-items: center; gap: 18px; margin-bottom: 32px;
+}
+.ph-rule { width: 32px; height: 1px; background: var(--ch); opacity: .5; }
+.ph-label {
+  font-size: 8px; letter-spacing: 0.46em; text-transform: uppercase;
+  color: var(--ch); font-weight: 400;
+}
+.ph-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(40px, 6vw, 72px); font-weight: 300;
+  line-height: 1.08; color: var(--ivory); letter-spacing: 0.01em;
+  margin-bottom: 20px;
+}
+.ph-intro {
+  font-size: 14px; line-height: 2.1; color: var(--t50);
+  font-weight: 300; max-width: 560px;
+}
+
+/* ── MAIN CONTENT ── */
+.k-content {
+  background: var(--obsidian);
+  padding: 96px 88px 144px;
+}
+.k-inner {
+  max-width: 1360px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 120px;
+  align-items: start;
+}
+
+/* ─── LEFT COLUMN: Contact info ─── */
+.k-left {}
+
+/* Company name */
+.k-company {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(18px, 2vw, 24px); font-weight: 300;
+  color: var(--ivory2); letter-spacing: 0.02em;
+  line-height: 1.3; margin-bottom: 56px;
+}
+
+/* Info groups */
+.k-groups { display: flex; flex-direction: column; }
+
+.k-group {
+  padding: 36px 0;
+  border-bottom: 1px solid var(--t08);
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+.k-group:first-child { border-top: 1px solid var(--t08); }
+
+.k-group-label {
+  font-size: 8px; letter-spacing: 0.42em; text-transform: uppercase;
+  color: rgba(191,160,106,0.5); font-weight: 400;
+  padding-top: 4px;
+}
+
+.k-group-value {
+  font-family: 'EB Garamond', serif;
+  font-size: 17px; line-height: 1.85;
+  color: var(--ivory2); letter-spacing: 0.03em;
+}
+.k-group-value a {
+  display: inline-block;
+  color: var(--ch); text-decoration: none;
+  border-bottom: 1px solid rgba(191,160,106,0.22);
+  padding-bottom: 1px;
+  transition: color .4s ease, border-color .4s ease;
+}
+.k-group-value a:hover { color: var(--ch-hi); border-color: rgba(191,160,106,0.55); }
+
+/* Phone — larger display */
+.k-phone-link {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(22px, 2.5vw, 30px); font-weight: 300;
+  color: var(--ivory); letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: color .4s ease;
+  display: block;
+  line-height: 1.2;
+}
+.k-phone-link:hover { color: var(--ch); }
+
+/* Email */
+.k-email-link {
+  font-family: 'EB Garamond', serif;
+  font-size: 19px; font-weight: 400;
+  color: var(--ivory2); letter-spacing: 0.04em;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(191,160,106,0.2);
+  padding-bottom: 2px;
+  transition: color .4s ease, border-color .4s ease;
+  display: inline-block;
+}
+.k-email-link:hover { color: var(--ch); border-color: rgba(191,160,106,0.55); }
+
+/* Discreet promise */
+.k-promise {
+  margin-top: 52px; padding: 32px 36px;
+  border: 1px solid var(--ch-lo);
+  background: rgba(191,160,106,0.018);
+}
+.k-promise p {
+  font-family: 'EB Garamond', serif; font-style: italic;
+  font-size: 15px; line-height: 2.0; color: var(--t50);
+}
+.k-promise cite {
+  display: block; margin-top: 16px; font-style: normal;
+  font-size: 8px; letter-spacing: 0.32em; text-transform: uppercase;
+  color: rgba(191,160,106,0.42);
+}
+
+/* ─── RIGHT COLUMN: Form ─── */
+.k-right {}
+
+.k-form-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(20px, 2.5vw, 28px); font-weight: 300;
+  color: var(--ivory); letter-spacing: 0.01em;
+  margin-bottom: 8px;
+}
+.k-form-heading em { font-style: italic; color: var(--ch-hi); }
+
+.k-form-sub {
+  font-size: 13px; line-height: 1.9; color: var(--t30);
+  font-weight: 300; margin-bottom: 44px;
+}
+
+/* Form fields */
+.cform { display: flex; flex-direction: column; }
+.fgrow { display: grid; grid-template-columns: 1fr 1fr; gap: 0 28px; }
+
+.ff {
+  padding: 22px 0 20px;
+  border-bottom: 1px solid rgba(238,235,228,0.07);
+  transition: border-color .5s ease;
+}
+.ff:focus-within { border-color: rgba(191,160,106,0.38); }
+
+.ff label {
+  display: block;
+  font-size: 8px; letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--t18); font-weight: 400; margin-bottom: 12px;
+  transition: color .5s;
+}
+.ff:focus-within label { color: rgba(191,160,106,0.65); }
+
+.ff input,
+.ff textarea,
+.ff select {
+  width: 100%; background: transparent; border: none; outline: none;
+  font-family: 'Jost', sans-serif; font-size: 14px; font-weight: 300;
+  color: var(--ivory); letter-spacing: 0.04em;
+  -webkit-appearance: none; appearance: none;
+}
+.ff textarea { resize: none; height: 72px; }
+.ff input::placeholder,
+.ff textarea::placeholder { color: rgba(238,235,228,0.12); }
+.ff select option { background: #141414; color: var(--ivory); }
+
+/* Submit */
+.fsubmit { margin-top: 48px; }
+.btn-primary {
+  display: inline-block;
+  font-family: 'Jost', sans-serif;
+  font-size: 9px; letter-spacing: 0.32em; text-transform: uppercase;
+  font-weight: 400; color: var(--void);
+  background: var(--ch); border: 1px solid var(--ch);
+  padding: 22px 52px; text-decoration: none; cursor: pointer;
+  position: relative; overflow: hidden;
+  transition: background .6s ease, border-color .6s ease;
+  width: 100%;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute; top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: rgba(255,255,255,0.07);
+  transition: left .6s ease;
+}
+.btn-primary:hover { background: var(--ch-hi); border-color: var(--ch-hi); }
+.btn-primary:hover::before { left: 0; }
+
+/* Privacy note */
+.form-note {
+  margin-top: 20px;
+  font-size: 11px; letter-spacing: 0.06em; line-height: 1.8;
+  color: var(--t18);
+}
+.form-note a {
+  color: var(--ch); text-decoration: none;
+  border-bottom: 1px solid rgba(191,160,106,0.22);
+  transition: color .4s, border-color .4s;
+}
+.form-note a:hover { color: var(--ch-hi); border-color: rgba(191,160,106,0.55); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--void);
+  border-top: 1px solid var(--ch-lo);
+  padding: 56px 88px;
+}
+.f-inner {
+  max-width: 1360px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.f-logo {
+  font-family: 'EB Garamond', serif;
+  font-size: 14px; letter-spacing: 0.34em; text-transform: uppercase;
+  color: var(--t18); text-decoration: none;
+}
+.f-copy { font-size: 10px; letter-spacing: 0.1em; color: rgba(238,235,228,0.12); }
+.f-links { display: flex; gap: 36px; list-style: none; }
+.f-links a {
+  font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--t18); text-decoration: none; transition: color .5s;
+}
+.f-links a:hover { color: var(--ch); }
+
+/* ── ANIMATIONS ── */
+.rv {
+  opacity: 0; transform: translateY(14px);
+  transition: opacity 1.1s ease, transform 1.1s ease;
+}
+.rv.in { opacity: 1; transform: translateY(0); }
+.rv.d1 { transition-delay: .12s; }
+.rv.d2 { transition-delay: .22s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1140px) {
+  nav { padding: 28px 40px; }
+  .nav-links { display: none; }
+  .page-header { padding: 140px 40px 72px; }
+  .ph-corner { display: none; }
+  .k-content { padding: 72px 40px 112px; }
+  .k-inner { grid-template-columns: 1fr; gap: 72px; }
+  footer { padding: 44px 40px; }
+  .f-inner { flex-direction: column; gap: 24px; text-align: center; }
+  .f-links { justify-content: center; }
+}
+@media (max-width: 680px) {
+  .page-header { padding: 120px 24px 56px; }
+  .k-content { padding: 52px 24px 88px; }
+  footer { padding: 40px 24px; }
+  .k-group { grid-template-columns: 1fr; gap: 8px; }
+  .k-group-label { font-size: 8px; }
+  .fgrow { grid-template-columns: 1fr; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cur"></div>
+
+<!-- ══════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════ -->
+<nav>
+  <a href="aerocharter-nord.html" class="nav-wordmark">
+    <span class="nav-mark"></span>
+    Aerocharter Nord
+  </a>
+  <ul class="nav-links">
+    <li><a href="aerocharter-nord.html#vorteile">Vorteile</a></li>
+    <li><a href="aerocharter-nord.html#flugzeuge">Flotte</a></li>
+    <li><a href="aerocharter-nord.html#empty-legs">Empty Legs</a></li>
+    <li><a href="kontakt.html" class="active">Kontakt</a></li>
+  </ul>
+  <a href="tel:+4940500535085" class="nav-tel">040 · 500 535 85</a>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     PAGE HEADER
+══════════════════════════════════════════ -->
+<header class="page-header">
+  <div class="ph-corner ph-corner-tl"></div>
+  <div class="ph-corner ph-corner-tr"></div>
+  <div class="ph-inner rv">
+    <div class="ph-eyebrow">
+      <div class="ph-rule"></div>
+      <span class="ph-label">Sprechen Sie uns an</span>
+    </div>
+    <h1 class="ph-title">Kontakt</h1>
+    <p class="ph-intro">Für weitere Informationen, bei Fragen und für Anfragen stehen wir Ihnen unter folgenden Kontaktmöglichkeiten zur Verfügung.</p>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     CONTENT
+══════════════════════════════════════════ -->
+<main class="k-content">
+  <div class="k-inner">
+
+    <!-- ── LEFT: Contact details ── -->
+    <div class="k-left rv">
+
+      <p class="k-company">
+        Aerocharter Nord<br>
+        Flugdienstagentur Pfitzer GmbH
+      </p>
+
+      <div class="k-groups">
+
+        <div class="k-group">
+          <span class="k-group-label">Telefon</span>
+          <div class="k-group-value">
+            <a href="tel:+4940500535085" class="k-phone-link">040 – 500 535 85</a>
+          </div>
+        </div>
+
+        <div class="k-group">
+          <span class="k-group-label">E-Mail</span>
+          <div class="k-group-value">
+            <a href="mailto:mail@aerocharter.de" class="k-email-link">mail@aerocharter.de</a>
+          </div>
+        </div>
+
+        <div class="k-group">
+          <span class="k-group-label">Adresse</span>
+          <div class="k-group-value">
+            Geschäftsfliegerzentrum<br>
+            Gebäude 347A<br>
+            22335 Hamburg-Flughafen
+          </div>
+        </div>
+
+        <div class="k-group">
+          <span class="k-group-label">Postfach</span>
+          <div class="k-group-value">
+            Postfach 634139<br>
+            22323 Hamburg
+          </div>
+        </div>
+
+      </div>
+
+      <div class="k-promise">
+        <p>„Jede Anfrage wird von uns mit größter Sorgfalt und absoluter Diskretion behandelt. Ihre Privatsphäre hat für uns höchste Priorität."</p>
+        <cite>Aerocharter Nord — Seit über 20 Jahren</cite>
+      </div>
+
+    </div>
+
+    <!-- ── RIGHT: Inquiry form ── -->
+    <div class="k-right rv d1">
+
+      <h2 class="k-form-heading">Ihre Anfrage<br><em>diskret übermitteln</em></h2>
+      <p class="k-form-sub">Teilen Sie uns Ihr Reisevorhaben vertraulich mit. Wir melden uns zeitnah bei Ihnen.</p>
+
+      <form class="cform" action="mailto:mail@aerocharter.de" method="POST" enctype="text/plain">
+
+        <div class="fgrow">
+          <div class="ff">
+            <label for="f-vorname">Vorname</label>
+            <input type="text" id="f-vorname" name="Vorname" required autocomplete="given-name">
+          </div>
+          <div class="ff">
+            <label for="f-nachname">Nachname</label>
+            <input type="text" id="f-nachname" name="Nachname" required autocomplete="family-name">
+          </div>
+        </div>
+
+        <div class="ff">
+          <label for="f-email">E-Mail-Adresse</label>
+          <input type="email" id="f-email" name="E-Mail" required autocomplete="email">
+        </div>
+
+        <div class="ff">
+          <label for="f-tel">Telefon</label>
+          <input type="tel" id="f-tel" name="Telefon" autocomplete="tel">
+        </div>
+
+        <div class="fgrow">
+          <div class="ff">
+            <label for="f-von">Abflugort</label>
+            <input type="text" id="f-von" name="Abflugort" placeholder="z. B. Hamburg (HAM)">
+          </div>
+          <div class="ff">
+            <label for="f-nach">Zielort</label>
+            <input type="text" id="f-nach" name="Zielort" placeholder="z. B. Zürich (ZRH)">
+          </div>
+        </div>
+
+        <div class="fgrow">
+          <div class="ff">
+            <label for="f-datum">Reisedatum</label>
+            <input type="text" id="f-datum" name="Reisedatum" placeholder="TT.MM.JJJJ">
+          </div>
+          <div class="ff">
+            <label for="f-pax">Passagiere</label>
+            <input type="number" id="f-pax" name="Passagiere" min="1" max="20" placeholder="1">
+          </div>
+        </div>
+
+        <div class="ff">
+          <label for="f-art">Art der Anfrage</label>
+          <select id="f-art" name="Anfrageart">
+            <option value="" disabled selected></option>
+            <option value="Geschäftsreiseflug">Geschäftsreiseflug</option>
+            <option value="Privatjet Charter">Privatjet Charter</option>
+            <option value="Gruppenflug">Gruppenflug</option>
+            <option value="Corporate Shuttle">Corporate Shuttle</option>
+            <option value="Fluganfrage">Fluganfrage</option>
+            <option value="Empty Leg">Empty Leg</option>
+            <option value="Sonstiges">Sonstiges</option>
+          </select>
+        </div>
+
+        <div class="ff">
+          <label for="f-nachricht">Ihre Nachricht</label>
+          <textarea id="f-nachricht" name="Nachricht" placeholder="Teilen Sie uns Ihre Wünsche vertraulich mit …"></textarea>
+        </div>
+
+        <div class="fsubmit">
+          <button type="submit" class="btn-primary">Anfrage vertraulich übermitteln</button>
+        </div>
+
+        <p class="form-note">
+          Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Daten gemäß unserer
+          <a href="datenschutz.html">Datenschutzerklärung</a> zu.
+          Wir melden uns diskret und zeitnah bei Ihnen.
+        </p>
+
+      </form>
+
+    </div>
+
+  </div>
+</main>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer>
+  <div class="f-inner">
+    <a href="aerocharter-nord.html" class="f-logo">Aerocharter Nord</a>
+    <p class="f-copy">© 2025 Aerocharter Nord. Alle Rechte vorbehalten.</p>
+    <ul class="f-links">
+      <li><a href="impressum.html">Impressum</a></li>
+      <li><a href="datenschutz.html">Datenschutz</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+/* Cursor */
+const cur = document.getElementById('cur');
+document.addEventListener('mousemove', e => {
+  cur.style.left = e.clientX + 'px';
+  cur.style.top  = e.clientY + 'px';
+});
+document.addEventListener('mouseenter', () => { cur.style.opacity = 1; });
+document.addEventListener('mouseleave', () => { cur.style.opacity = 0; });
+
+/* Scroll reveals */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.05 });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
